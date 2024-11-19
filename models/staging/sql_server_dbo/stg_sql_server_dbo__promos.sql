@@ -5,7 +5,7 @@ with
     new_row as (
         select
             md5('sin-promo') as promo_id,  -- Nueva ID
-            lower('Sin Promoción') as desc_promo,  -- Convertir a minúsculas
+            lower('Sin Promocion') as desc_promo,  -- Convertir a minúsculas
             0 as discount,
             'active' as status,
             false as is_deleted,
