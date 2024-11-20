@@ -4,7 +4,7 @@ with
     src_addresses as (
         select
             address_id,
-            try_cast(zipcode as int) as zipcode,
+            cast(zipcode as int) as zipcode,
             lower(country),
             lower(state) as state,
             case when _fivetran_deleted is null then false else true end as is_deleted,

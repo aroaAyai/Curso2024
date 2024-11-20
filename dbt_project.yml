@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'my_new_project'
+name: 'aroa_project'
 version: '1.0.0'
 config-version: 2
 
@@ -44,4 +44,4 @@ models:
       +materialized: table
 seeds:
   +database: "ALUMNO25_DEV_BRONZE_DB"
-  +schema: "SEEDS"
+  +schema: "data_transaction"

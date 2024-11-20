@@ -7,14 +7,29 @@ WITH src_orders AS (
 clean_orders AS (
     SELECT
         order_id,
-        case when shipping_service is null then 'in process' else shipping_service, 
-        shipping_cost,
-        inventory,
         CASE 
-            WHEN _fivetran_deleted IS NULL THEN false 
-            ELSE true 
+            WHEN shipping_service IS NULL THEN 'in process' 
+            ELSE shipping_service 
+        END AS shipping_service, 
+        shipping_cost,
+        address_id,
+        created_at,
+        CASE 
+            WHEN promo_id IS NULL THEN 'sin promocion' 
+            ELSE promo_id 
+        END AS promo_desc,
+        CONVERT_TIMEZONE('UTC', estimated_delivery_at) AS estimated_delivery_at,
+        order_cost,
+        user_id,
+        order_total,
+        CONVERT_TIMEZONE('UTC', delivered_at) AS delivered_at,
+        tracking_id,
+        status,
+        CASE 
+            WHEN _fivetran_deleted IS NULL THEN FALSE 
+            ELSE TRUE 
         END AS is_deleted,
-        convert_timezone('UTC', _fivetran_synced) AS synced_fivetran
+        CONVERT_TIMEZONE('UTC', _fivetran_synced) AS synced_fivetran
     FROM src_orders
 )
 
