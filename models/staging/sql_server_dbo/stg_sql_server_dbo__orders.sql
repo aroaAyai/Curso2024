@@ -8,14 +8,14 @@ clean_orders AS (
     SELECT
         order_id,
         CASE 
-            WHEN shipping_service IS NULL THEN 'in process' 
+            WHEN shipping_service IS NULL or TRIM(promo_id)= '' tHEN 'in process' 
             ELSE shipping_service 
         END AS shipping_service, 
         shipping_cost,
         address_id,
         created_at,
         CASE 
-            WHEN promo_id IS NULL THEN 'sin promocion' 
+            WHEN promo_id IS NULL OR TRIM(promo_id) = '' THEN 'sin promocion' 
             ELSE promo_id 
         END AS promo_desc,
         CONVERT_TIMEZONE('UTC', estimated_delivery_at) AS estimated_delivery_at,

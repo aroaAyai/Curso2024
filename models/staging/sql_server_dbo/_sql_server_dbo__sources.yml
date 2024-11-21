@@ -1,9 +1,10 @@
 version: 2
 
 sources:
-  - name: sql_server_dbo  # nombre de la fuente 
-    schema: sql_server_dbo  # esquema donde residen los datos crudos
-    database: ALUMNO25_DEV_BRONZE_DB  # nombre de la base de datos
+
+  - name: sql_server_dbo # name of the source 
+    schema: sql_server_dbo # this is the schema our raw data lives in
+    database: "{{ env_var('DBT_ENVIRONMENTS') }}_BRONZE_DB" # this is the name of our database
 
     quoting:
       database: false
